@@ -1,3 +1,15 @@
-shipping:
-  x: 50
-  y: 64
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:shippingdb # On commence avec H2 pour tester vite
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
