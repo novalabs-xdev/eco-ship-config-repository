@@ -1,1 +1,29 @@
+# Message partagé par défaut entre les services via le Config Server
 message: "Bonjour depuis Config Server"
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # Endpoints Actuator exposés en HTTP pour le monitoring et le refresh
+        include: health, info, refresh
+  endpoint:
+    health:
+      # Affiche le détail du health uniquement aux clients autorisés
+      show-details: when_authorized
+  info:
+    env:
+      # Rend disponibles certaines infos d'environnement dans /actuator/info
+      enabled: true
+
+info:
+  app:
+    # Nom du service courant; fallback utile si spring.application.name n'est pas défini
+    name: ${spring.application.name:unknown-service}
+    # Profil actif pour identifier rapidement l'environnement d'exécution
+    environment: ${spring.profiles.active:default}
+
+logging:
+  level:
+    # Niveau de log global par défaut pour tous les services
+    root: INFO

@@ -1,0 +1,10 @@
+eureka:
+  instance:
+    # En production, on évite localhost pour permettre un vrai déploiement réseau
+    hostname: ${EUREKA_HOST:discovery-service}
+
+management:
+  endpoint:
+    health:
+      # En prod, on limite les détails de santé aux clients autorisés
+      show-details: when_authorized

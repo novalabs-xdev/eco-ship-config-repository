@@ -1,0 +1,10 @@
+eureka:
+  instance:
+    # En développement, on reste sur la machine locale
+    hostname: localhost
+
+management:
+  endpoint:
+    health:
+      # En dev, on peut afficher plus facilement les détails pour diagnostiquer
+      show-details: always

@@ -1,12 +1,16 @@
 server:
+  # Port par défaut du serveur Eureka
   port: 8761
 
 eureka:
   instance:
+    # Nom d'hôte utilisé pour construire l'URL d'enregistrement et d'accès à Eureka
     hostname: localhost
   client:
-    # On dit à Eureka de ne pas s'enregistrer auprès de lui-même
+    # Le serveur Eureka ne doit pas s'enregistrer lui-même comme client
     register-with-eureka: false
+    # Le serveur Eureka n'a pas besoin de récupérer un registre externe en mode standalone
     fetch-registry: false
     service-url:
+      # URL de référence du serveur Eureka
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

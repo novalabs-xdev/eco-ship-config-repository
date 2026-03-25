@@ -1,3 +1,27 @@
+# Configuration spécifique à l'environnement de production
+spring:
+  datasource:
+    # En production, la base doit être fournie explicitement
+    url: ${DB_URL}
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      # La console H2 doit rester désactivée en production
+      enabled: false
+
+eureka:
+  client:
+    service-url:
+      # En prod, on cible une adresse réseau configurable pour Eureka
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://discovery-service:8761/eureka/}
+
+management:
+  endpoint:
+    health:
+      # En prod, les détails de santé restent limités
+      show-details: when_authorized
+
 shipping:
+  # Valeurs d'exemple propres à l'environnement de production
   x: 150
   y: 158

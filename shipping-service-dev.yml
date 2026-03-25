@@ -1,3 +1,21 @@
+# Configuration spécifique à l'environnement de développement
+spring:
+  datasource:
+    # Base H2 en mémoire pour démarrer vite en local
+    url: jdbc:h2:mem:shippingdb
+    driverClassName: org.h2.Driver
+  h2:
+    console:
+      # Console H2 activée en développement pour inspecter les données
+      enabled: true
+
+management:
+  endpoint:
+    health:
+      # En dev, on expose tous les détails pour faciliter le diagnostic
+      show-details: always
+
 shipping:
+  # Valeurs d'exemple propres à l'environnement de développement
   x: 564
   y: 48
