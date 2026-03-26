@@ -1,0 +1,27 @@
+server:
+  # Port HTTP du microservice travel
+  port: 8082
+
+spring:
+  datasource:
+    # Identifiants de connexion fournis par l'environnement ou par les profils
+    username: ${DB_USERNAME:sa}
+    password: ${DB_PASSWORD:}
+
+eureka:
+  client:
+    service-url:
+      # URL du serveur Eureka utilisé pour l'enregistrement du microservice
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://localhost:8761/eureka/}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        # Endpoints utiles pour superviser et rafraîchir la configuration
+        include: health, info, refresh
+
+logging:
+  level:
+    # Niveau de log dédié au service travel
+    root: INFO
